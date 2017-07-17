@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: unixhat-controller
+spec:
+  replicas: 1
+  selector:
+    app: ha-test
+  template:
+    metadata:
+      labels:
+        app: ha-test
+    spec:
+      containers:
+      - name: k8s
+        image: heriyanto/k8s
+        ports:
+        - name: nodejs-port
+          containerPort: 3000
